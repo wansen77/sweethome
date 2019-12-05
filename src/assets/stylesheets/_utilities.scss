@@ -1,0 +1,29 @@
+    
+    //backgruond
+    .bg-cover {
+        background-size: cover;
+        background-position: center center;
+    }
+    
+    // four-sides
+    .four-sides{
+      position: absolute;
+      top: 0;
+      bottom:0;
+      right: 0;
+      left: 0;
+    }
+    
+    // bg,text,color,border color
+    .bg-primary-lighter{
+      background-color: $primary-200;
+    }
+    .text-primary-lighter{
+      color:$primary-500 !important;
+    }
+
+   .btn-square{
+     background-color: $primary-200;
+   }
+
+    

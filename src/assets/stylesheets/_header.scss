@@ -1,0 +1,64 @@
+.header{
+    position: relative;
+
+   .header-img{
+        height: 496px;
+    }
+    .header-img-context{
+        position: absolute;
+        right: 40px;
+        top: 40px;
+    }
+}
+
+// rectangle box
+.rectangle-section{
+    margin-top: -90px;
+}
+
+.rectangle-img-wrap{
+    height: 256px;
+    position: relative;
+    writing-mode: vertical-lr;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 1;
+    border-right: solid 1px white;
+    .rectangle-over{
+        background-color:rgba(theme-color('primary'), .8) ;
+        transition:.5s;
+    }
+
+    // 互動
+    &.active, &:hover, &:focus{
+        color:theme-color('primary');
+        font-weight: bolder;
+        .rectangle-over{
+          background-color:rgba(theme-color('accent'), .8) ;
+     }
+     .rectangle-img{
+          filter: blur(0);  //互動時圖片清晰
+     }
+}
+}
+
+.rectangle-text{
+    font-size: 24px;
+    letter-spacing: 10px;
+    z-index:2;
+    text-decoration: none;
+}
+
+.rectangle-img{
+    position: absolute;
+    top:-10px;     //先超過再在外層加overflow:hidden
+    bottom: -10px;
+    right: -10px;
+    left: -10px;
+    filter: blur(5px);  //模糊
+    z-index:-1
+
+}

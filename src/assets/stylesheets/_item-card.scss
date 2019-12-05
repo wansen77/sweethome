@@ -1,0 +1,43 @@
+
+
+    .item-card {
+        height: 315px;
+        position: relative;
+    }
+
+    .item-tag {
+        position: absolute;
+        left: 20px;
+        top: 0;
+        background-color: $primary;
+        color: white;
+        letter-spacing: 5px;
+        writing-mode: vertical-lr;
+        font-weight: bolder;
+        padding: 15px 10px;
+    }
+
+    .item-icon {
+        position: absolute;
+        right: 22px;
+        top: 19px;
+        font-size: 20px;
+    }
+
+    .item-name, .item-price{
+        font-size: $font-size-lg;
+    }
+
+    .item-name{
+        border-right:1px solid $primary-200;
+    }
+
+    .item-cart{
+      background-color: $primary-200;
+      display:block;
+      width: 100%;
+      font-size: 24px;
+      padding:16px 90px;
+      border:0;
+      font-weight: bold;
+    }

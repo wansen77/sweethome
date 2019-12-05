@@ -1,0 +1,16 @@
+// label,input,submit元件
+
+// 配合justify-content-between橫向
+.form-square{
+    background-color: $primary-200;
+
+    .form-input{
+        padding-top:20px;
+        padding-bottom: 20px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+  
+}
+
