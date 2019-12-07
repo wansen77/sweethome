@@ -175,10 +175,7 @@
 
 <script>
 export default {
-  name: "sweethome",
-  data() {
-    return {};
-  }
+  name: "sweethome"
 };
 </script>
 

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import SweetHome from '@/components/sweethome'
 import Login from '@/components/pages/login'
 import Products from '@/components/pages/products'
+import ShoppingCart from '@/components/pages/shoppingcart'
 import Carts from '@/components/pages/carts'
 import Checkout1 from '@/components/pages/checkout-1'
 import Checkout2 from '@/components/pages/checkout-2'
@@ -15,49 +16,64 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: '甜點屋',
-      component: SweetHome
+      path: '*',
+      redirect: '/login'
     },
     {
       path: '/login',
-      name: '登入',
+      name: 'Login',
       component: Login
     },
     {
+      path: '/',
+      name: 'SweetHome',
+      component: SweetHome,
+    },
+    {
       path: '/products',
-      name: '產品',
-      component: Products
+      name: 'Products',
+      component: Products,
     },
     {
-      path: '/carts',
-      name: '產品',
-      component: Carts
-    },
-    {
-      path: '/checkout-1',
-      name: '步驟1',
-      component: Checkout1
-    },
-    {
-      path: '/checkout-2',
-      name: '步驟2',
-      component: Checkout2
-    },
-    {
-      path: '/checkout-3',
-      name: '步驟3',
-      component: Checkout3
-    },
-    {
-      path: '/checkout-3-2',
-      name: '步驟3-2',
-      component: Checkout32
-    },
-    {
-      path: '/checkout-success',
-      name: '完成訂單',
-      component: CheckoutSuccess
-    },
-  ]
+      path: '/admin/shoppingcart',
+      component: ShoppingCart,
+      children: [
+        {
+          path: '',
+          component: Carts,
+          name: 'Cart',
+          meta: { requiresAuth: true },
+        },
+        {
+          path: 'checkout-1',
+          name: 'Checkout1',
+          component: Checkout1,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: 'checkout-2',
+          name: 'Checkout2',
+          component: Checkout2,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: 'checkout-3',
+          name: 'Checkout3',
+          component: Checkout3,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: 'checkout-3-2',
+          name: 'Checkout3-2',
+          component: Checkout32,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: 'checkout-success',
+          name: 'CheckoutSuccess',
+          component: CheckoutSuccess,
+          meta: { requiresAuth: true },
+        },
+      ]
+    },]
 })

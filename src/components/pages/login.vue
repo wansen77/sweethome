@@ -59,7 +59,13 @@
               <label for="connection" class="text-primary d-flex align-items-center py-3 px-4 mb-0">
                 <i class="fas fa-user" style="font-size: 20px;"></i>
               </label>
-              <input type="email" id="connection" class="form-input w-100" placeholder="電子信箱/手機號碼" />
+              <input
+                type="email"
+                id="connection"
+                class="form-input w-100"
+                placeholder="電子信箱/手機號碼"
+                v-model="user.username"
+              />
             </div>
           </div>
           <div class="bg-primary px-5 pb-3">
@@ -67,7 +73,13 @@
               <label for="connection" class="text-primary d-flex align-items-center py-3 px-4 mb-0">
                 <i class="fas fa-key" style="font-size: 20px;"></i>
               </label>
-              <input type="email" id="connection" class="form-input w-100" placeholder="請輸入使用者密碼" />
+              <input
+                type="password"
+                id="connection"
+                class="form-input w-100"
+                placeholder="請輸入使用者密碼"
+                v-model="user.password"
+              />
             </div>
           </div>
           <div class="bg-primary px-5 pb-4">
@@ -78,6 +90,7 @@
             type="submit"
             class="btn btn-accent text-primary w-100 rounded-0 py-3"
             style="font-size: 24px !important;"
+            @click.prevent="signin"
           >登入帳號</button>
         </div>
       </div>
@@ -86,10 +99,34 @@
 </template>
 
 <script>
+import Navbar from "../navbar";
+import Connection from "../connection";
+
 export default {
   name: "login",
   data() {
-    return {};
+    return {
+      user: {
+        username: "",
+        password: ""
+      }
+    };
+  },
+  components: {
+    Navbar,
+    Connection
+  },
+  methods: {
+    signin() {
+      const vm = this;
+      const api = `${process.env.API_PATH}/admin/signin`;
+      this.$http.post(api, this.user).then(response => {
+        console.log(response.data);
+        if (response.data.success) {
+          vm.$router.push("/");
+        }
+      });
+    }
   }
 };
 </script>

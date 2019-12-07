@@ -11,8 +11,14 @@
               <div class="col-6"></div>
             </div>
             <div class="btn-group w-100 mb-3" role="group" aria-label="Basic example">
-              <a href="checkout-3.html" class="btn btn-outline-primary-lighter btn-lg active">電子發票</a>
-              <a href="checkout-3-2.html" class="btn btn-outline-primary-lighter btn-lg">郵寄發票</a>
+              <router-link
+                to="/admin/shoppingcart/checkout-3"
+                class="btn btn-outline-primary-lighter btn-lg active"
+              >電子發票</router-link>
+              <router-link
+                to="/admin/shoppingcart/checkout-3-2"
+                class="btn btn-outline-primary-lighter btn-lg"
+              >郵寄發票</router-link>
             </div>
             <div class="form-group">
               <label for="mail" class="h4">電子郵件信箱</label>
@@ -34,7 +40,10 @@
             </div>
           </div>
 
-          <a href="checkout-success.html" class="btn btn-accent btn-block btn-lg">完成</a>
+          <router-link
+            to="/admin/shoppingcart/checkout-success"
+            class="btn btn-accent btn-block btn-lg"
+          >完成</router-link>
         </div>
 
         <div class="col-md-4 d-none d-md-block">

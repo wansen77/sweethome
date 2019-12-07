@@ -153,11 +153,11 @@
               </div>
             </div>
             <div class="mx-md-0" style="margin-left:-15px;margin-right:-15px;">
-              <a
-                href="checkout-1.html"
+              <router-link
+                to="/admin/shoppingcart/checkout-1"
                 class="d-block bg-accent btn-lg text-center rounded-0"
                 style="font-weight: 600;"
-              >結帳</a>
+              >結帳</router-link>
             </div>
           </div>
         </div>
@@ -168,7 +168,7 @@
 
 <script>
 export default {
-  name: "carst",
+  name: "carts",
   data() {
     return {};
   }

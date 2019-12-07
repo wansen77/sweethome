@@ -76,7 +76,10 @@
             </div>
           </div>
 
-          <a href="checkout-3.html" class="btn btn-accent btn-block btn-lg">下一步</a>
+          <router-link
+            to="/admin/shoppingcart/checkout-3"
+            class="btn btn-accent btn-block btn-lg"
+          >下一步</router-link>
         </div>
 
         <div class="col-md-4 d-none d-md-block">

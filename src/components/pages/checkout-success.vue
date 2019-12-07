@@ -7,11 +7,11 @@
           style="background-image: url(https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2c5a2cf31c693f5c15fb08135bf1adf2&auto=format&fit=crop&w=1347&q=80);"
         >
           <img src="@/assets/images/lg-付款成功.svg" alt height="45.5px" class="mb-5" />
-          <a
-            href="index.html"
+          <router-link
+            to="/"
             class="btn btn-accent btn-lg text-primary py-3 px-9"
             style="font-weight: 600;"
-          >繼續逛逛</a>
+          >繼續逛逛</router-link>
         </div>
       </header>
     </div>
