@@ -10,6 +10,7 @@ import Checkout2 from '@/components/pages/checkout-2'
 import Checkout3 from '@/components/pages/checkout-3'
 import Checkout32 from '@/components/pages/checkout-3-2'
 import CheckoutSuccess from '@/components/pages/checkout-success'
+import Dashboard from '@/components/pages/dashboard'
 
 Vue.use(Router)
 
@@ -75,5 +76,11 @@ export default new Router({
           meta: { requiresAuth: true },
         },
       ]
+    },
+    {
+      path: '/admin/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
+      meta: { requiresAuth: true },
     },]
 })

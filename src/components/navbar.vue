@@ -46,6 +46,12 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/login">登入</router-link>
             </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" @click.prevent="logout">登出</a>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/admin/dashboard">控制板</router-link>
+            </li>
           </ul>
         </div>
       </div>
@@ -58,6 +64,17 @@ export default {
   name: "navbar",
   data() {
     return {};
+  },
+  methods: {
+    logout() {
+      const vm = this;
+      const api = `${process.env.API_PATH}/logout`;
+      this.$http.post(api).then(response => {
+        if (response.data.success) {
+          vm.$router.push("/login");
+        }
+      });
+    }
   }
 };
 </script>
