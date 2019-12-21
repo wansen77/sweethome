@@ -1,165 +1,51 @@
 <template>
   <div>
-    <div class="container my-md-5">
-      <div class="row">
-        <div class="col-md-8">
-          <h1 class="text-center bg-primary-lighter h4 mb-0 py-4">您的購物車</h1>
-          <div class="cart-item">
-            <div
-              class="cart-item-img"
-              style="background-image: url(https://images.unsplash.com/photo-1497052254059-f3e0bf1a5133?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ce7267675921fc7e41b5610f49750a40&auto=format&fit=crop&w=685&q=80);"
-            ></div>
-            <div class="cart-item-direction">
-              <div class="cart-item-name">
-                比薩馬卡塔
-                <br />NT$200
-              </div>
-              <div class="cart-item-number">
-                <div class="input-group d-flex">
-                  <div class="input-group-prepend cart-item-square">
-                    <span class="input-group-text" id="basic-addon1">-</span>
-                  </div>
-                  <input
-                    type="text"
-                    class="form-control cart-item-square"
-                    placeholder="2"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                  />
-                  <div class="input-group-append cart-item-square">
-                    <span class="input-group-text" id="basic-addon2">+</span>
-                  </div>
-                </div>
-              </div>
-              <div class="cart-item-price">
-                <span>NT$400</span>
-              </div>
-              <div class="cart-item-remove">
+    <loading :active.sync="isLoading"></loading>
+    <div class="container py-4">
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th>產品名稱</th>
+            <th width="120">數量</th>
+            <th width="120">單價</th>
+            <th width="100">總計</th>
+            <th width="120">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in carts" :key="item.id">
+            <td>{{item.product.title}}</td>
+            <td>{{item.qty}}</td>
+            <td class="text-right">{{item.product.price|currency}}</td>
+            <td class="text-right">{{item.total|currency}}</td>
+            <td>
+              <button class="btn btn-outline-primary btn-sm" @click.prevent="removeCart(item.id)">
                 <i class="fas fa-trash-alt"></i>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex d-md-none border-bottom">
-            <div class="cart-item-price ml-auto h4">
-              <span>NT$400</span>
-            </div>
-            <div class="cart-item-remove ml-5">
-              <i class="fas fa-trash-alt"></i>
-            </div>
-          </div>
-          <div class="cart-item">
-            <div
-              class="cart-item-img"
-              style="background-image: url(https://images.unsplash.com/photo-1497052254059-f3e0bf1a5133?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ce7267675921fc7e41b5610f49750a40&auto=format&fit=crop&w=685&q=80);"
-            ></div>
-            <div class="cart-item-direction">
-              <div class="cart-item-name">
-                比薩馬卡塔
-                <br />NT$200
-              </div>
-              <div class="cart-item-number">
-                <div class="input-group d-flex">
-                  <div class="input-group-prepend cart-item-square">
-                    <span class="input-group-text" id="basic-addon1">-</span>
-                  </div>
-                  <input
-                    type="text"
-                    class="form-control cart-item-square"
-                    placeholder="2"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                  />
-                  <div class="input-group-append cart-item-square">
-                    <span class="input-group-text" id="basic-addon2">+</span>
-                  </div>
-                </div>
-              </div>
-              <div class="cart-item-price">
-                <span>NT$400</span>
-              </div>
-              <div class="cart-item-remove">
-                <i class="fas fa-trash-alt"></i>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex d-md-none border-bottom">
-            <div class="cart-item-price ml-auto h4">
-              <span>NT$400</span>
-            </div>
-            <div class="cart-item-remove ml-5">
-              <i class="fas fa-trash-alt"></i>
-            </div>
-          </div>
-          <div class="cart-item">
-            <div
-              class="cart-item-img"
-              style="background-image: url(https://images.unsplash.com/photo-1497052254059-f3e0bf1a5133?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ce7267675921fc7e41b5610f49750a40&auto=format&fit=crop&w=685&q=80);"
-            ></div>
-            <div class="cart-item-direction">
-              <div class="cart-item-name">
-                比薩馬卡塔
-                <br />NT$200
-              </div>
-              <div class="cart-item-number">
-                <div class="input-group d-flex">
-                  <div class="input-group-prepend cart-item-square">
-                    <span class="input-group-text" id="basic-addon1">-</span>
-                  </div>
-                  <input
-                    type="text"
-                    class="form-control cart-item-square"
-                    placeholder="2"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                  />
-                  <div class="input-group-append cart-item-square">
-                    <span class="input-group-text" id="basic-addon2">+</span>
-                  </div>
-                </div>
-              </div>
-              <div class="cart-item-price">
-                <span>NT$400</span>
-              </div>
-              <div class="cart-item-remove">
-                <i class="fas fa-trash-alt"></i>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex d-md-none border-bottom">
-            <div class="cart-item-price ml-auto h4">
-              <span>NT$400</span>
-            </div>
-            <div class="cart-item-remove ml-5">
-              <i class="fas fa-trash-alt"></i>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0">
-            <div class="card-body order">
-              <h3 class="card-title py-3 py-md-0">訂單摘要</h3>
-              <hr />
-              <div class="d-flex justify-content-between">
-                <span class="h5">小計</span>
-                <span>NT$2500</span>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span class="h5">運費</span>
-                <span>NT$200</span>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span class="h4">總計</span>
-                <span>NT$2700</span>
-              </div>
-            </div>
-            <div class="mx-md-0" style="margin-left:-15px;margin-right:-15px;">
-              <router-link
-                to="/admin/shoppingcart/checkout-1"
-                class="d-block bg-accent btn-lg text-center rounded-0"
-                style="font-weight: 600;"
-              >結帳</router-link>
-            </div>
-          </div>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td class="text-right">購買總金額:</td>
+            <td class="text-right">{{total|currency}}</td>
+          </tr>
+          <tr v-if="!total==finalTotal">
+            <td></td>
+            <td></td>
+            <td class="text-right text-danger">折扣價:</td>
+            <td class="text-right">{{finalTotal|currency}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="input-group input-group-sm">
+        <input type="text" placeholder="請輸入優惠碼" v-model="coupon_code" />
+        <div class="input-group-appened">
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-sm"
+            @click.prevent="addCoupon"
+          >套用優惠碼</button>
         </div>
       </div>
     </div>
@@ -170,7 +56,49 @@
 export default {
   name: "carts",
   data() {
-    return {};
+    return {
+      carts: [],
+      total: "",
+      finalTotal: "",
+      coupon_code: ""
+    };
+  },
+  methods: {
+    getCart() {
+      const vm = this;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
+      vm.isLoading = true;
+      this.$http.get(api).then(response => {
+        console.log(response.data);
+        vm.isLoading = false;
+        vm.carts = response.data.data.carts;
+        vm.total = response.data.data.total;
+        vm.finalTotal = response.data.data.final_total;
+      });
+    },
+    removeCart(id) {
+      const vm = this;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart/${id}`;
+      vm.isLoading = true;
+      this.$http.delete(api).then(response => {
+        vm.getCart();
+        vm.isLoading = false;
+      });
+    },
+    addCoupon() {
+      const vm = this;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/coupon`;
+      const coupon = { code: vm.coupon_code };
+      vm.isLoading = true;
+      this.$http.post(api, { data: coupon }).then(response => {
+        console.log(response.data);
+        vm.getCart();
+        vm.isLoading = false;
+      });
+    }
+  },
+  created() {
+    this.getCart();
   }
 };
 </script>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="container my-md-5">
       <header class="header">
         <div
@@ -24,83 +25,41 @@
         </div>
         <div class="col-md-8">
           <div class="row">
-            <div class="col-md-6 mb-5 mb-md-4">
-              <div class="card">
+            <div class="col-md-6 mb-4" v-for="item in products" :key="item.id">
+              <div class="card border-0 shadow-sm">
                 <div
-                  class="card-img-top item-card bg-cover"
-                  style="background-image: url(https://images.unsplash.com/photo-1534073737927-85f1ebff1f5d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1204e5551548223af82981f0025984ef&auto=format&fit=crop&w=634&q=80)"
-                >
-                  <div class="item-tag">本日精選</div>
-                  <div class="item-icon">
-                    <i class="far fa-heart"></i>
+                  style="height: 150px; background-size: cover; background-position: center"
+                  :style="{backgroundImage:`url(${item.imageUrl})`}"
+                ></div>
+                <div class="card-body">
+                  <span class="badge badge-secondary float-right ml-2">{{item.category}}</span>
+                  <h5 class="card-title">
+                    <a href="#" class="text-dark">{{item.title}}</a>
+                  </h5>
+                  <p class="card-text">{{item.content}}</p>
+                  <div class="d-flex justify-content-between align-items-baseline">
+                    <div class="h5" v-if="!item.price">{{item.origin_price}}</div>
+                    <del class="h6" v-if="item.price">{{item.origin_price}}</del>
+                    <div class="h5" v-if="item.price">{{item.price}}</div>
                   </div>
                 </div>
-                <div class="card-body p-0">
-                  <div class="row text-center">
-                    <div class="col p-3 item-name">蝸牛甜甜圈</div>
-                    <strong class="col p-3 item-price">NT$450</strong>
-                  </div>
-                  <a href="#" class="btn item-cart">加入購物車</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-5 mb-md-4">
-              <div class="card">
-                <div
-                  class="card-img-top item-card bg-cover"
-                  style="background-image: url(https://images.unsplash.com/photo-1525059337994-6f2a1311b4d4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7ce5bbf66bdb4ed3b6965f0b3618aa43&auto=format&fit=crop&w=654&q=80)"
-                >
-                  <div class="item-tag">本日精選</div>
-                  <div class="item-icon">
-                    <i class="far fa-heart"></i>
-                  </div>
-                </div>
-                <div class="card-body p-0">
-                  <div class="row text-center">
-                    <div class="col p-3 item-name">吸管插麵包</div>
-                    <strong class="col p-3 item-price">NT$450</strong>
-                  </div>
-                  <a href="#" class="btn item-cart">加入購物車</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-5 mb-md-4">
-              <div class="card">
-                <div
-                  class="card-img-top item-card bg-cover"
-                  style="background-image: url(https://images.unsplash.com/photo-1490474504059-bf2db5ab2348?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0cad6d3de8adbdf6298d4ca5d094f8c6&auto=format&fit=crop&w=1350&q=80)"
-                >
-                  <div class="item-tag">本日精選</div>
-                  <div class="item-icon">
-                    <i class="far fa-heart"></i>
-                  </div>
-                </div>
-                <div class="card-body p-0">
-                  <div class="row text-center">
-                    <div class="col p-3 item-name">藍莓尬奇異</div>
-                    <strong class="col p-3 item-price">NT$450</strong>
-                  </div>
-                  <a href="#" class="btn item-cart">加入購物車</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-4">
-              <div class="card">
-                <div
-                  class="card-img-top item-card bg-cover"
-                  style="background-image: url(https://images.unsplash.com/photo-1534073737927-85f1ebff1f5d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1204e5551548223af82981f0025984ef&auto=format&fit=crop&w=634&q=80)"
-                >
-                  <div class="item-tag">本日精選</div>
-                  <div class="item-icon">
-                    <i class="far fa-heart"></i>
-                  </div>
-                </div>
-                <div class="card-body p-0">
-                  <div class="row text-center">
-                    <div class="col p-3 item-name">蝸牛甜甜圈</div>
-                    <strong class="col p-3 item-price">NT$450</strong>
-                  </div>
-                  <a href="#" class="btn item-cart">加入購物車</a>
+                <div class="card-footer d-flex">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary btn-sm"
+                    @click.prevent="getProduct(item.id)"
+                  >
+                    <i class="fas fa-cog fa-spin" v-if="status.loadingItem===item.id"></i>
+                    查看更多
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger btn-sm ml-auto"
+                    @click.prevent="addtoCart(item.id)"
+                  >
+                    <i class="fas fa-cog fa-spin" v-if="status.loadingItem===item.id"></i>
+                    加到購物車
+                  </button>
                 </div>
               </div>
             </div>
@@ -108,38 +67,141 @@
         </div>
       </div>
 
-      <nav aria-label="Page navigation example">
-        <ul class="pagination pagination-lg justify-content-end mt-2">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
+      <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-8">
+        <ul class="pagination">
+          <li class="page-item" :class="{'disabled':!pagination.has_pre}">
+            <a
+              class="page-link"
+              href="#"
+              @click.prevent="getProducts(pagination.current_page-1)"
+            >回上一頁</a>
           </li>
-          <li class="page-item active">
-            <a class="page-link" href="#">1</a>
+          <li
+            class="page-item"
+            v-for="page in pagination.total_pages"
+            :key="page"
+            :class="{'active':pagination.current_page===page}"
+          >
+            <a class="page-link" href="#" @click.prevent="getProducts(page)">{{page}}</a>
           </li>
-          <li class="page-item">
-            <a class="page-link" href="#">2</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">3</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
+          <li class="page-item" :class="{'disabled':!pagination.has_next}">
+            <a
+              class="page-link"
+              href="#"
+              @click.prevent="getProducts(pagination.current_page+1)"
+            >下一頁</a>
           </li>
         </ul>
       </nav>
+    </div>
+
+    <!-- 產品詳細Modal -->
+    <div
+      class="modal fade"
+      id="productModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{product.title}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img :src="product.imageUrl" class="img-fluid" alt />
+            <blockquote class="blockquote mt-3">
+              <p class="mb-0">{{product.content}}</p>
+              <footer class="blockquoter-footer text-right">{{product.description}}</footer>
+            </blockquote>
+
+            <div class="d-flex justify-content-between align-items-baseline">
+              <div class="h4" v-if="!product.price">{{product.origin_price}}元</div>
+              <del class="h6" v-if="product.price">原價{{product.origin_price}}元</del>
+              <div class="h5" v-if="product.price">現在只要{{product.price}}元</div>
+            </div>
+            <select name class="form-control mt-3" v-model="product.num">
+              <option :value="num" v-for="num in 10" :key="num">選購{{num}}{{product.unit}}</option>
+            </select>
+          </div>
+          <div class="modal-footer bg-dark">
+            <div class="text-muted text-nowrap mr-3">
+              小計
+              <strong>{{product.num*product.price}}</strong>元
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="addtoCart(product.id,product.num)"
+            >
+              <i class="fas fa-cog fa-spin" v-if="status.loadingItem===product.id"></i>
+              加到購物車
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import $ from "jquery";
+
 export default {
   name: "products",
   data() {
-    return {};
+    return {
+      products: [],
+      pagination: {},
+      product: {},
+      isLoading: false,
+      status: { loadingItem: "" }
+    };
+  },
+  methods: {
+    getProducts(page = 1) {
+      const vm = this;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/products?page=${page}`;
+      vm.isLoading = true;
+      this.$http.get(api).then(response => {
+        // console.log(response.data);
+        vm.isLoading = false;
+        vm.products = response.data.products;
+        vm.pagination = response.data.pagination;
+      });
+    },
+    getProduct(id) {
+      const vm = this;
+      vm.status.loadingItem = id;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/product/${id}`;
+      this.$http.get(api).then(response => {
+        vm.status.loadingItem = "";
+        // console.log(response.data);
+        vm.product = response.data.product;
+      });
+      $("#productModal").modal("show");
+    },
+    addtoCart(id, qty = 1) {
+      const vm = this;
+      vm.status.loadingItem = id;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/cart`;
+      const cart = {
+        product_id: id,
+        qty
+      };
+      this.$http.post(api, { data: cart }).then(response => {
+        console.log(response.data);
+        vm.status.loadingItem = "";
+      });
+      $("#productModal").modal("hide");
+    }
+  },
+  created() {
+    this.getProducts();
   }
 };
 </script>

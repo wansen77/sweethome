@@ -31,7 +31,7 @@
           />
         </a>
         <!--carts order的使用-->
-        <router-link class="nav-link text-primary d-flex order-md-1" to="/admin/shoppingcart">
+        <router-link class="nav-link text-primary d-flex order-md-1" to="/shoppingcart">
           <i class="fas fa-shopping-cart"></i>
         </router-link>
         <!--navbar選單-->

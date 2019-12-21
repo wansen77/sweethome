@@ -36,44 +36,38 @@ export default new Router({
       component: Products,
     },
     {
-      path: '/admin/shoppingcart',
+      path: '/shoppingcart',
       component: ShoppingCart,
       children: [
         {
           path: '',
           component: Carts,
           name: 'Cart',
-          meta: { requiresAuth: true },
         },
         {
           path: 'checkout-1',
           name: 'Checkout1',
           component: Checkout1,
-          meta: { requiresAuth: true },
         },
         {
           path: 'checkout-2',
           name: 'Checkout2',
           component: Checkout2,
-          meta: { requiresAuth: true },
         },
         {
           path: 'checkout-3',
           name: 'Checkout3',
           component: Checkout3,
-          meta: { requiresAuth: true },
         },
         {
           path: 'checkout-3-2',
           name: 'Checkout3-2',
           component: Checkout32,
-          meta: { requiresAuth: true },
         },
         {
           path: 'checkout-success',
           name: 'CheckoutSuccess',
           component: CheckoutSuccess,
-          meta: { requiresAuth: true },
         },
       ]
     },

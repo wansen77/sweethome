@@ -257,7 +257,7 @@ export default {
   methods: {
     getProducts(page = 1) {
       const vm = this;
-      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/admin/products?page=${page}`;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/products?page=${page}`;
       vm.isLoading = true;
       this.$http.get(api).then(response => {
         console.log(response.data);
