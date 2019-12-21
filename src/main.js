@@ -8,11 +8,13 @@ import router from './router'
 import 'bootstrap'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
+import currencyFilter from './filters/currency'
 
 axios.defaults.withCredentials = true
 // 跨域必須加上這段且在login上的API必須使用 / admin / signin
 Vue.use(VueAxios, axios)
 Vue.component('Loading', Loading)
+Vue.filter('currency', currencyFilter)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

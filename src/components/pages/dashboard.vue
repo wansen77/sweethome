@@ -20,8 +20,8 @@
         <tr v-for="item in products" :key="item.id">
           <td class="text-center">{{item.category}}</td>
           <td class="text-center">{{item.title}}</td>
-          <td>{{item.origin_price}}</td>
-          <td>{{item.price}}</td>
+          <td>{{item.origin_price|currency}}</td>
+          <td>{{item.price|currency}}</td>
           <td class="text-secondary">
             <span v-if="item.is_enabled">啟用</span>
             <span v-else>未啟用</span>
@@ -35,6 +35,26 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- 分頁 -->
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-8">
+      <ul class="pagination">
+        <li class="page-item" :class="{'disabled':!pagination.has_pre}">
+          <a class="page-link" href="#" @click.prevent="getProducts(pagination.current_page-1)">回上一頁</a>
+        </li>
+        <li
+          class="page-item"
+          v-for="page in pagination.total_pages"
+          :key="page"
+          :class="{'active':pagination.current_page===page}"
+        >
+          <a class="page-link" href="#" @click.prevent="getProducts(page)">{{page}}</a>
+        </li>
+        <li class="page-item" :class="{'disabled':!pagination.has_next}">
+          <a class="page-link" href="#" @click.prevent="getProducts(pagination.current_page+1)">下一頁</a>
+        </li>
+      </ul>
+    </nav>
 
     <!-- 新增或編輯產品Modal -->
     <div
@@ -227,6 +247,7 @@ export default {
   data() {
     return {
       products: {},
+      pagination: {},
       tempProduct: {},
       isNew: false,
       isLoading: false,
@@ -234,14 +255,15 @@ export default {
     };
   },
   methods: {
-    getProducts() {
+    getProducts(page = 1) {
       const vm = this;
-      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/admin/products`;
+      const api = `${process.env.API_PATH}/api/${process.env.CUSTOM_PATH}/admin/products?page=${page}`;
       vm.isLoading = true;
       this.$http.get(api).then(response => {
         console.log(response.data);
         vm.isLoading = false;
         vm.products = response.data.products;
+        vm.pagination = response.data.pagination;
       });
     },
     openModal(isNew, item) {
