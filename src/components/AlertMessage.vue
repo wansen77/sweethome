@@ -1,5 +1,5 @@
 <template>
-  <div class="message-alert">
+  <div class="message-alert font-weight-bold" style="left:50%;top:50%;right:auto;">
     <div
       class="alert alert-dismissible"
       :class="'alert-' + item.status"
@@ -48,7 +48,7 @@ export default {
             vm.messages.splice(i, 1);
           }
         });
-      }, 5000);
+      }, 2000);
     }
   },
   created() {
@@ -56,7 +56,7 @@ export default {
     vm.$bus.$on("message:push", (message, status = "warning") => {
       vm.updateMessage(message, status);
     });
-    vm.$bus.$emit("message:push");
+    // vm.$bus.$emit("message:push");
     // 自定義名稱 'messsage:push'
     // message: 傳入參數
     // status: 樣式，預設值為 warning

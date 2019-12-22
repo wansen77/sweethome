@@ -1,6 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
+    <Alert />
     <div class="text-right mt-4">
       <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#productModal">建立新產品</button> -->
       <button type="button" class="btn btn-primary" @click="openModal(true)">建立新產品</button>
@@ -241,9 +242,13 @@
 
 <script>
 import $ from "jquery"; //必須在元件內注入$寫法
+import Alert from "../AlertMessage";
 
 export default {
   name: "dashboard",
+  components: {
+    Alert
+  },
   data() {
     return {
       products: {},
@@ -326,6 +331,9 @@ export default {
             // vm.tempProduct.imageUrl = response.data.imageUrl;
             // console.log(vm.tempProduct);    //會發現沒雙向綁定
             vm.$set(vm.tempProduct, "imageUrl", response.data.imageUrl); //目標,欄位,路徑
+            this.$bus.$emit("message:push", "上傳成功", "success");
+          } else {
+            this.$bus.$emit("message:push", response.data.message, "danger");
           }
         });
     }

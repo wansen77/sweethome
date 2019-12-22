@@ -11,6 +11,7 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 import currencyFilter from './filters/currency'
 import VeeValidate from 'vee-validate'   //表單驗證
 import zhTW_Validate from 'vee-validate/dist/locale/zh_TW'
+import './bus'
 
 axios.defaults.withCredentials = true
 // 跨域必須加上這段且在login上的API必須使用 / admin / signin
