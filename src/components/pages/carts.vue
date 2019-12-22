@@ -49,6 +49,7 @@
         </div>
       </div>
     </div>
+    <router-link to="/shoppingcart/checkout-1" class="btn btn-accent btn-block btn-lg">下一步</router-link>
   </div>
 </template>
 

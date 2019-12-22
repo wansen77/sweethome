@@ -7,8 +7,6 @@ import ShoppingCart from '@/components/pages/shoppingcart'
 import Carts from '@/components/pages/carts'
 import Checkout1 from '@/components/pages/checkout-1'
 import Checkout2 from '@/components/pages/checkout-2'
-import Checkout3 from '@/components/pages/checkout-3'
-import Checkout32 from '@/components/pages/checkout-3-2'
 import CheckoutSuccess from '@/components/pages/checkout-success'
 import Dashboard from '@/components/pages/dashboard'
 
@@ -50,19 +48,9 @@ export default new Router({
           component: Checkout1,
         },
         {
-          path: 'checkout-2',
+          path: 'checkout-2/:orderId',
           name: 'Checkout2',
           component: Checkout2,
-        },
-        {
-          path: 'checkout-3',
-          name: 'Checkout3',
-          component: Checkout3,
-        },
-        {
-          path: 'checkout-3-2',
-          name: 'Checkout3-2',
-          component: Checkout32,
         },
         {
           path: 'checkout-success',

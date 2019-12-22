@@ -9,10 +9,14 @@ import 'bootstrap'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
 import currencyFilter from './filters/currency'
+import VeeValidate from 'vee-validate'   //表單驗證
+import zhTW_Validate from 'vee-validate/dist/locale/zh_TW'
 
 axios.defaults.withCredentials = true
 // 跨域必須加上這段且在login上的API必須使用 / admin / signin
 Vue.use(VueAxios, axios)
+Vue.use(VeeValidate, { events: 'input|blur', })    //修正移出欄位不顯示錯誤訊息的bug
+VeeValidate.Validator.localize('zh_TW', zhTW_Validate)   //email錯誤提示中文化
 Vue.component('Loading', Loading)
 Vue.filter('currency', currencyFilter)
 Vue.config.productionTip = false
