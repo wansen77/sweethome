@@ -38,24 +38,7 @@
     </table>
 
     <!-- 分頁 -->
-    <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-8">
-      <ul class="pagination">
-        <li class="page-item" :class="{'disabled':!pagination.has_pre}">
-          <a class="page-link" href="#" @click.prevent="getProducts(pagination.current_page-1)">回上一頁</a>
-        </li>
-        <li
-          class="page-item"
-          v-for="page in pagination.total_pages"
-          :key="page"
-          :class="{'active':pagination.current_page===page}"
-        >
-          <a class="page-link" href="#" @click.prevent="getProducts(page)">{{page}}</a>
-        </li>
-        <li class="page-item" :class="{'disabled':!pagination.has_next}">
-          <a class="page-link" href="#" @click.prevent="getProducts(pagination.current_page+1)">下一頁</a>
-        </li>
-      </ul>
-    </nav>
+    <Pagination :pagination="pagination" @changepages="getProducts" />
 
     <!-- 新增或編輯產品Modal -->
     <div
@@ -243,15 +226,17 @@
 <script>
 import $ from "jquery"; //必須在元件內注入$寫法
 import Alert from "../AlertMessage";
+import Pagination from "../pagination";
 
 export default {
   name: "dashboard",
   components: {
-    Alert
+    Alert,
+    Pagination
   },
   data() {
     return {
-      products: {},
+      products: [],
       pagination: {},
       tempProduct: {},
       isNew: false,
@@ -268,6 +253,8 @@ export default {
         console.log(response.data);
         vm.isLoading = false;
         vm.products = response.data.products;
+        // vm.pagination = response.data.pagination;
+        // console.log("pagination", vm.pagination);
         vm.pagination = response.data.pagination;
       });
     },
