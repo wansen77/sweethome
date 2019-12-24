@@ -5,29 +5,29 @@
       <header class="header">
         <div
           class="header-img bg-cover"
-          style="background-image: url(https://images.unsplash.com/photo-1473256599800-b48c7c88cd7e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ae0d68ab0db4ee79bdce92722b31112b&auto=format&fit=crop&w=925&q=80);"
+          style="background-image: url(https://images.unsplash.com/photo-1496174883999-edcc585a373f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);"
         ></div>
         <div class="row justify-content-center rectangle-section">
           <div class="col-md-10">
             <div class="row no-gutters">
-              <a href="#" class="col-4 rectangle-img-wrap">
-                <span class="rectangle-text">本日精選</span>
+              <a href="#featured" class="col-4 rectangle-img-wrap">
+                <span class="rectangle-text">蛋糕</span>
                 <div class="four-sides rectangle-over"></div>
                 <div
                   class="rectangle-img bg-cover"
                   style="background-image: url(https://images.unsplash.com/photo-1504473089979-b1c4993a9653?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9db69b72e1f7d1b4e5c81cee531108ff&auto=format&fit=crop&w=634&q=80);"
                 ></div>
               </a>
-              <a href="#" class="col-4 rectangle-img-wrap">
-                <span class="rectangle-text">人氣推薦</span>
+              <a href="#recommend" class="col-4 rectangle-img-wrap">
+                <span class="rectangle-text">餅乾</span>
                 <div class="four-sides rectangle-over"></div>
                 <div
                   class="rectangle-img bg-cover"
                   style="background-image: url(https://images.unsplash.com/photo-1525059337994-6f2a1311b4d4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7ce5bbf66bdb4ed3b6965f0b3618aa43&auto=format&fit=crop&w=654&q=80);"
                 ></div>
               </a>
-              <a href="#" class="col-4 rectangle-img-wrap border-0">
-                <span class="rectangle-text">新品上市</span>
+              <a href="#new-product" class="col-4 rectangle-img-wrap border-0">
+                <span class="rectangle-text">冰淇淋</span>
                 <div class="four-sides rectangle-over"></div>
                 <div
                   class="rectangle-img bg-cover"
@@ -54,7 +54,7 @@
             <div class="col-md-6 break-vertical-block">
               <div
                 class="bg-cover h-100 section-intro-image"
-                style="background-image: url(https://images.unsplash.com/photo-1519730722595-a5ff788dea4d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2712a33fe9b13532f0682ac4e1e749b8&auto=format&fit=crop&w=634&q=80);"
+                style="background-image: url(https://images.unsplash.com/photo-1572519806263-b57196f2494b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);"
               ></div>
             </div>
             <div class="col-md-6 d-flex justify-content-end">
@@ -84,7 +84,7 @@
             <div class="col-md-6 break-vertical-block">
               <div
                 class="bg-cover h-100 section-intro-image"
-                style="background-image: url(https://images.unsplash.com/photo-1497052254059-f3e0bf1a5133?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ce7267675921fc7e41b5610f49750a40&auto=format&fit=crop&w=685&q=80);"
+                style="background-image: url(https://images.unsplash.com/photo-1562663626-db7642010d11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);"
               ></div>
             </div>
             <div class="col-md-6 d-flex justify-content-end">
@@ -107,24 +107,26 @@
     </section>
 
     <div class="container my-5 my-md-8">
+      <div class="my-5 d-flex align-items-center">
+        <i class="fas fa-candy-cane fa-4x"></i>
+        <h3 class="ml-3 font-italic" style="font-weight:700" id="featured">蛋糕</h3>
+      </div>
+
       <div class="row">
         <div class="col-md-4">
           <div class="card">
             <div
               class="card-img-top item-card bg-cover"
-              style="background-image: url(https://images.unsplash.com/photo-1534073737927-85f1ebff1f5d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1204e5551548223af82981f0025984ef&auto=format&fit=crop&w=634&q=80)"
+              style="background-image: url(https://images.unsplash.com/photo-1516054575922-f0b8eeadec1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80)"
             >
               <div class="item-tag">本日精選</div>
-              <div class="item-icon">
-                <i class="far fa-heart"></i>
-              </div>
             </div>
             <div class="card-body p-0">
               <div class="row text-center">
                 <div class="col p-3 item-name">蝸牛甜甜圈</div>
                 <strong class="col p-3 item-price">NT$450</strong>
               </div>
-              <a href="#" class="btn item-cart">加入購物車</a>
+              <!-- <a href="#" class="btn item-cart">加入購物車</a> -->
             </div>
           </div>
         </div>
@@ -132,19 +134,16 @@
           <div class="card">
             <div
               class="card-img-top item-card bg-cover"
-              style="background-image: url(https://images.unsplash.com/photo-1525059337994-6f2a1311b4d4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7ce5bbf66bdb4ed3b6965f0b3618aa43&auto=format&fit=crop&w=654&q=80)"
+              style="background-image: url(https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80)"
             >
               <div class="item-tag">本日精選</div>
-              <div class="item-icon">
-                <i class="far fa-heart"></i>
-              </div>
             </div>
             <div class="card-body p-0">
               <div class="row text-center">
                 <div class="col p-3 item-name">吸管插麵包</div>
                 <strong class="col p-3 item-price">NT$450</strong>
               </div>
-              <a href="#" class="btn item-cart">加入購物車</a>
+              <!-- <a href="#" class="btn item-cart">加入購物車</a> -->
             </div>
           </div>
         </div>
@@ -152,19 +151,132 @@
           <div class="card">
             <div
               class="card-img-top item-card bg-cover"
-              style="background-image: url(https://images.unsplash.com/photo-1490474504059-bf2db5ab2348?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0cad6d3de8adbdf6298d4ca5d094f8c6&auto=format&fit=crop&w=1350&q=80)"
+              style="background-image: url(https://images.unsplash.com/photo-1557979619-445218f326b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)"
             >
               <div class="item-tag">本日精選</div>
-              <div class="item-icon">
-                <i class="far fa-heart"></i>
-              </div>
             </div>
             <div class="card-body p-0">
               <div class="row text-center">
                 <div class="col p-3 item-name">藍莓尬奇異</div>
                 <strong class="col p-3 item-price">NT$450</strong>
               </div>
-              <a href="#" class="btn item-cart">加入購物車</a>
+              <!-- <a href="#" class="btn item-cart">加入購物車</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-5 d-flex align-items-center">
+        <i class="fas fa-candy-cane fa-4x"></i>
+        <h3 class="ml-3 font-italic" style="font-weight:700" id="recommend">餅乾</h3>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div
+              class="card-img-top item-card bg-cover"
+              style="background-image: url(https://images.unsplash.com/photo-1549408134-6195b7fd0d42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1953&q=80)"
+            >
+              <div class="item-tag">本日精選</div>
+            </div>
+            <div class="card-body p-0">
+              <div class="row text-center">
+                <div class="col p-3 item-name">蝸牛甜甜圈</div>
+                <strong class="col p-3 item-price">NT$450</strong>
+              </div>
+              <!-- <a href="#" class="btn item-cart">加入購物車</a> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div
+              class="card-img-top item-card bg-cover"
+              style="background-image: url(https://images.unsplash.com/photo-1575993051801-d5a7940d78a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)"
+            >
+              <div class="item-tag">本日精選</div>
+            </div>
+            <div class="card-body p-0">
+              <div class="row text-center">
+                <div class="col p-3 item-name">吸管插麵包</div>
+                <strong class="col p-3 item-price">NT$450</strong>
+              </div>
+              <!-- <a href="#" class="btn item-cart">加入購物車</a> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div
+              class="card-img-top item-card bg-cover"
+              style="background-image: url(https://images.unsplash.com/photo-1513519683267-4ee6761728ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80)"
+            >
+              <div class="item-tag">本日精選</div>
+            </div>
+            <div class="card-body p-0">
+              <div class="row text-center">
+                <div class="col p-3 item-name">藍莓尬奇異</div>
+                <strong class="col p-3 item-price">NT$450</strong>
+              </div>
+              <!-- <a href="#" class="btn item-cart">加入購物車</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-5 d-flex align-items-center">
+        <i class="fas fa-candy-cane fa-4x"></i>
+        <h3 class="ml-3 font-italic" style="font-weight:700" id="new-product">冰淇淋</h3>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div
+              class="card-img-top item-card bg-cover"
+              style="background-image: url(https://images.unsplash.com/photo-1505394033641-40c6ad1178d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=806&q=80)"
+            >
+              <div class="item-tag">本日精選</div>
+            </div>
+            <div class="card-body p-0">
+              <div class="row text-center">
+                <div class="col p-3 item-name">蝸牛甜甜圈</div>
+                <strong class="col p-3 item-price">NT$450</strong>
+              </div>
+              <!-- <a href="#" class="btn item-cart">加入購物車</a> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div
+              class="card-img-top item-card bg-cover"
+              style="background-image: url(https://images.unsplash.com/photo-1504050502639-3d3c3f6266cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80)"
+            >
+              <div class="item-tag">本日精選</div>
+            </div>
+            <div class="card-body p-0">
+              <div class="row text-center">
+                <div class="col p-3 item-name">吸管插麵包</div>
+                <strong class="col p-3 item-price">NT$450</strong>
+              </div>
+              <!-- <a href="#" class="btn item-cart">加入購物車</a> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div
+              class="card-img-top item-card bg-cover"
+              style="background-image: url(https://images.unsplash.com/photo-1571089465427-cd3c533e809f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80)"
+            >
+              <div class="item-tag">本日精選</div>
+            </div>
+            <div class="card-body p-0">
+              <div class="row text-center">
+                <div class="col p-3 item-name">藍莓尬奇異</div>
+                <strong class="col p-3 item-price">NT$450</strong>
+              </div>
+              <!-- <a href="#" class="btn item-cart">加入購物車</a> -->
             </div>
           </div>
         </div>

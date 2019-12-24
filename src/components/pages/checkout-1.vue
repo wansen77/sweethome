@@ -53,24 +53,8 @@
                 />
                 <span class="text-danger" v-if="errors.has('tel')">請輸入連絡電話</span>
               </div>
-              <div class="form-row">
-                <div class="form-group col-6">
-                  <label for="address" class="h4">收件人地址</label>
-                  <select class="form-control form-control-lg bg-primary-lighter">
-                    <option selected>台中市</option>
-                    <option>高雄市</option>
-                    <option>宜蘭市</option>
-                  </select>
-                </div>
-                <div class="form-group col-6 d-flex align-items-end">
-                  <select class="form-control form-control-lg bg-primary-lighter">
-                    <option selected>太平區</option>
-                    <option>烏日區</option>
-                    <option>大里區</option>
-                  </select>
-                </div>
-              </div>
               <div class="form-group">
+                <label for="address" class="h4">收件人地址</label>
                 <input
                   type="text"
                   name="address"
@@ -84,12 +68,10 @@
                 <span class="text-danger" v-if="errors.has('address')">請輸入收件地址</span>
               </div>
               <div class="text-right">
-                <button class="btn btn-danger">送出訂單</button>
+                <button class="btn btn-accent btn-block btn-lg">送出訂單</button>
               </div>
             </form>
           </div>
-
-          <router-link to="/shoppingcart/checkout-2" class="btn btn-accent btn-block btn-lg">下一步</router-link>
         </div>
         <div class="col-md-4 d-none d-md-block">
           <div class="card text-center text-primary-lighter">

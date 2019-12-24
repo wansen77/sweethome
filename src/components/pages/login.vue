@@ -99,9 +99,6 @@
 </template>
 
 <script>
-import Navbar from "../navbar";
-import Connection from "../connection";
-
 export default {
   name: "login",
   data() {
@@ -111,10 +108,6 @@ export default {
         password: ""
       }
     };
-  },
-  components: {
-    Navbar,
-    Connection
   },
   methods: {
     signin() {

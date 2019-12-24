@@ -3,13 +3,11 @@
     <loading :active.sync="isLoading"></loading>
     <div class="container py-0 py-md-6">
       <div class="bg-primary text-white py-5" style="padding-left:35px ; padding-right: 35px;">
-        <div class="row" style="margin-bottom: 40px;">
-          <div class="col-6">
-            <h1 class="mb-0">付款</h1>
-          </div>
+        <div style="margin-bottom: 40px;">
+          <h1 class="mb-0">付款</h1>
 
-          <div class="my-5 row justify-content-center">
-            <form class="col-md-6" @submit.prevent="payOrder">
+          <div class="my-5">
+            <form @submit.prevent="payOrder">
               <table class="table text-white">
                 <thead>
                   <th>品名</th>
@@ -52,13 +50,13 @@
                 </tbody>
               </table>
               <div class="text-right" v-if="order.is_paid === false">
+                <button type="button" class="btn btn-success" @click="print">列印清單</button>
                 <button class="btn btn-danger">確認付款去</button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <router-link to="/shoppingcart/checkout-3" class="btn btn-accent btn-block btn-lg">下一步</router-link>
     </div>
   </div>
 </template>
@@ -96,6 +94,9 @@ export default {
           vm.$router.push(`/shoppingcart/checkout-success`);
         }
       });
+    },
+    print() {
+      window.print();
     }
   },
   created() {
