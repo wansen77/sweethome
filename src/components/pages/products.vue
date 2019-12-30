@@ -40,7 +40,7 @@
               data-toggle="list"
               href="#list-messages"
               role="tab"
-              aria-controls="messages""
+              aria-controls="messages"
             >餅乾</a>
             <a
               class="list-group-item list-group-item-action h4"
@@ -105,9 +105,10 @@
               class="tab-pane fade"
               id="list-profile"
               role="tabpanel"
-              aria-labelledby="list-profile-list">
+              aria-labelledby="list-profile-list"
+            >
               <div class="row">
-                <div class="col-md-6 mb-4" v-for="item in products" :key="item.id" v-if="item.category=='cake'">
+                <div class="col-md-6 mb-4" v-for="item in productCake" :key="item.id">
                   <div class="card border-0 shadow-sm">
                     <div
                       style="height: 150px; background-size: cover; background-position: center"
@@ -151,9 +152,10 @@
               class="tab-pane fade"
               id="list-messages"
               role="tabpanel"
-              aria-labelledby="list-messages-list">
+              aria-labelledby="list-messages-list"
+            >
               <div class="row">
-                <div class="col-md-6 mb-4" v-for="item in products" :key="item.id" v-if="item.category=='cookie'">
+                <div class="col-md-6 mb-4" v-for="item in productCookie" :key="item.id">
                   <div class="card border-0 shadow-sm">
                     <div
                       style="height: 150px; background-size: cover; background-position: center"
@@ -197,9 +199,10 @@
               class="tab-pane fade"
               id="list-settings"
               role="tabpanel"
-              aria-labelledby="list-settings-list">
+              aria-labelledby="list-settings-list"
+            >
               <div class="row">
-                <div class="col-md-6 mb-4" v-for="item in products" :key="item.id" v-if="item.category=='icecream'">
+                <div class="col-md-6 mb-4" v-for="item in productIcecream" :key="item.id">
                   <div class="card border-0 shadow-sm">
                     <div
                       style="height: 150px; background-size: cover; background-position: center"
@@ -349,7 +352,6 @@ export default {
         vm.isLoading = false;
         vm.products = response.data.products;
         vm.pagination = response.data.pagination;
-          
       });
     },
     getProduct(id) {
@@ -376,6 +378,30 @@ export default {
         vm.status.loadingItem = "";
       });
       $("#productModal").modal("hide");
+    }
+  },
+  computed: {
+    productCake() {
+      return this.products.filter(function(item) {
+        if (item.category === "cake") {
+          return true;
+        }
+      });
+      console.log(products);
+    },
+    productCookie() {
+      return this.products.filter(function(item) {
+        if (item.category === "cookie") {
+          return true;
+        }
+      });
+    },
+    productIcecream() {
+      return this.products.filter(function(item) {
+        if (item.category === "icecream") {
+          return true;
+        }
+      });
     }
   },
   created() {
